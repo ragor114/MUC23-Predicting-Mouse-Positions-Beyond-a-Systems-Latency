@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Mouse Prediction Study</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet"> 
+        <link rel="stylesheet" href="res/style/style.css">
+    </head>
+    <body>
+        <h1 id="topbar" class="robototext">Mouse Prediction Study</h1>
+
+        <canvas id="canvas1" class="hidden"></canvas>
+
+        <div id="start-screen">
+            <p id="welcome-text" class="robototext">Welcome to this Steering Law experiment. After pressing start you will have to complete multiple Steering Law tasks.<br>We will use the information we gather in this study to improve our predictive model and our study design. If you have any questions about the study or the use of your personal data feel free to contact us, please provide your ID for identification.<br>This study is conducted by Jannik Wiese (Jannik.Wiese@stud.uni-regensburg.de) under the supervision of Niels Henze (Niels.Henze@ur.de) at the University of Regensburg.</p>
+            <p id="thank-you" class="robototext">Thank you for your participation!</p>
+            <!--<a id="participant-id" class="robototext"></a>-->
+            <div id="form">
+                <form id="demographic-form" class="hidden">
+                    <div id="form-column-1" class="hidden">
+                        <label for="age-input" class="robototext input-headers hidden">Your Age:</label> <br>
+                        <input type="number" name="age" id="age-input" class="hidden"><br>
+        
+                        <label class="robototext input-headers hidden">Your Gender:</label> <br>
+                        <input type="radio" name="gender" id="male-gender" class="hidden">
+                        <label for="male-gender" class="robototext input-labels hidden">male</label> <br>
+                        <input type="radio" name="gender" id="female-gender" class="hidden">
+                        <label for="female-gender" class="robototext input-labels hidden">female</label><br>
+                        <input type="radio" name="gender" id="diverse-gender" class="hidden">
+                        <label for="diverse-gender" class="robototext input-labels hidden">other/prefer not to say</label> <br>
+
+                        <label class="robototext input-headers hidden">Which operating system are you using</label> <br>
+                        <label for="os-windows11" class="robototext input-labels hidden">Windows 11</label>
+                        <input type="radio" id="os-windows11" name="os" class="hidden"> <br>
+                        <label for="os-windows10" class="robototext input-labels hidden">Windows 10</label>
+                        <input type="radio" id="os-windows10" name="os" class="hidden"> <br>
+                        <label for="os-windows8" class="robototext input-labels hidden">Windows 8</label>
+                        <input type="radio" id="os-windows8" name="os" class="hidden"> <br>
+                        <label for="os-windows7" class="robototext input-labels hidden">Windows 7 or older</label>
+                        <input type="radio" id="os-windows7" name="os" class="hidden"> <br>
+                        <label for="os-macos" class="robototext input-labels hidden">MacOS/OSX</label>
+                        <input type="radio" id="os-macos" name="os" class="hidden"> <br>
+                        <label for="os-linux" class="robototext input-labels hidden" >Linux</label>
+                        <input type="radio" id="os-linux" name="os" class="hidden"> <br>
+                        <label for="os-mobile" class="robototext input-labels hidden">Mobile OS</label>
+                        <input type="radio" id="os-mobile" name="os" class="hidden"> <br>
+                        <label for="os-other" class="robototext input-labels hidden">Other</label>
+                        <input type="radio" id="os-other" name="os" class="hidden"> <br>
+                    </div>
+                    
+                    <div id="form-column-2" class="hidden">
+                        <label class="robototext input-headers hidden">Your Input Device:</label> <br>
+                        <input type="radio" name="inputdevice" id="mouse-device" class="hidden">
+                        <label for="mouse-device" class="robototext input-labels hidden">mouse</label> <br>
+                        <input type="radio" name="inputdevice" id="touchpad-device" class="hidden">
+                        <label for="touchpad-device" class="robototext input-labels hidden">touchpad</label> <br>
+                        <input type="radio" name="inputdevice" id="other-device" class="hidden">
+                        <label for="other-device" class="robototext input-labels hidden">other</label> <br>
+        
+                        <label class="robototext input-headers hidden">Your screen:</label> <br>
+                        <label for="resolution-input" class="robototext input-labels hidden">Your screens resulution (e.g. 1920x1080)</label>
+                        <input type="text" name="resolution" id="resolution-input" class="hidden"> <br>
+                        <label for="screensize-input" class="robototext input-labels hidden">Your screen size (diameter in inch, e.g. 24)</label>
+                        <input type="number" name="screensize" id="screensize-input" class="hidden"> <br>
+                        <label for="refresh-input" class="robototext input-labels hidden">Your screens refreshrate (in Hertz, e.g. 60)</label>
+                        <input type="number" name="refreshrate" id="refresh-input" class="hidden"> <br>
+
+                        
+                    </div>
+                </form>
+            </div>
+            <button id="start-button" class="robototext">start</button>
+        </div>
+
+        <div id="break-screen" class="hidden">
+                <h1 id="break-header" class="hidden robototext whitetext">Stop please fill out the questionnaire!</h1>
+                <button id="continue-button" class="hidden">Continue</button>
+        </div>
+
+        <div id="end-screen" class="hidden">
+            <p id="end-text">Thank you for participating! <br> This experiment was conducted by Jannik Wiese at the University of Regensburg (Jannik.Wiese@stud.uni-regensburg.de) under the supervision of Prof. Niels Henze (Niels.Henze@ur.de). If you have any further questions feel free to contact us. Please refer to your ID, which you can find below. <br> If you are coming from MTurk, please enter the ID below there.</p>
+            <a id="participant-id-end" class="robototext"></a>
+        </div>
+
+        <div id="bottom-bar" class="hidden">
+            <a id="bottom-bar-text" class="robototext">This is the bottomBar.</a>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@3.15.0/dist/tf.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-vis@1.0.2/dist/tfjs-vis.umd.min.js"></script>
+        <script type="module" src="res/js/index.js"></script>
+    </body>
+</html>
